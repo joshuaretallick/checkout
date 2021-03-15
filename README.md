@@ -1,45 +1,52 @@
-Introduction
+## Checkout
+The purpose of this challenge is to implement a supermarket checkout that calculates the total price of a number of items - to be run in a REPL like IRB. 
 
-The test should take no longer than 2 hours to complete.
+Don't worry about I/O.
 
-Task
+#### Requirements
+In a normal supermarket, things are identified using Stock Keeping Units, or SKUs. In our store, we'll use individual letters of the alphabet (A, B, C, and so on). 
 
-We are working with a client who wants to launch an e-commerce site to promote their brand, below are some of the products that they will be listing:
+Our goods are priced individually. In addition, some items are multi-priced: buy n of them, and they'll cost you y pounds.
 
-ID | Name | Price
+For example, item A might cost 50 pounds individually, but this week we have a special offer:
 
-0001 | Water Bottle | £24.95
+buy three As and they'll cost you 130.
 
-0002 | Hoodie | £65.00
+Our price table and offers:
 
-0003 | Sticker Set | £3.99
+| Item | Price | Special offers |
+|------|-------|----------------|
+| A    | 50    | 3A for 130     |
+| B    | 30    | 2B for 45      |
+| C    | 20    |                |
+| D    | 15    |                |
 
-The marketing team would like to run the following promotions;
 
-● If you spend over £75 then you get a 10% discount
+Notes:
 
-● If you buy two or more water bottles then the price drops to £22.99 each
+For any illegal input (non capitals) simply return -1
 
-Multiple promotions can be applied to the same checkout
+In order to complete the round you need to implement the following method: checkout(String) -> Integer
 
-The checkout system needs to be able to scan the items in any order then apply the promotion rules.
+Where:
 
-These rules should be allowed to change over time.
+param[0] = eg. 'AAB', a String containing the SKUs of all the products in the basket
 
-The​ ​pseudocode​ below outlines the interface for the checkout
+@return = eg. 120, an Integer representing the total checkout value of the items
 
-checkout = new checkout(promotionalRules)
+Acceptance Criteria
+`
+shop.checkout('aBc') # => -1
 
-checkout.scan(items) //List of item objects created from the products above
+shop.checkout('-B8x') # => -1
 
-println(checkout.total()) //e.g. £68.99
+shop.checkout(18) # => -1
 
-Implement a checkout that meets these requirements.
+shop.checkout('AA') # => 100
 
-Test Data
+shop.checkout('ABCD') # => 115
 
-Items: 0001,0001,0002,0003 Total Price: £103.47
+shop.checkout('AAA') # => 130
 
-Items: 0001,0001,0001 Total Price: £68.97
-
-Items: 0002,0002,0003 Total Price: £120.59
+shop.checkout('AAAAAA') # => 260
+`
