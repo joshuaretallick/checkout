@@ -9,7 +9,7 @@ class Checkout
     }
     receipt = 0
 
-    order= item.split('')
+    order= item.upcase.split('')
 
     order.each do |i|
       receipt += items[i]
